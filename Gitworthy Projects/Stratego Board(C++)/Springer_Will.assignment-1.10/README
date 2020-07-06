@@ -1,0 +1,14 @@
+WELCOME TO STRATEGO (board setter upper...)
+This program is a digital version of the board game stratego. It's in development, but here
+are the current features:
+
+-Creates a digital 10x10 board to play on
+-Contains 40 pieces for each player, from generals to spies
+-Two players can take turns setting up their sides of the board
+-Move a cursor with "wasd" and use 'q' to quit
+
+Here are things I'd like to implement, if I can get the time:
+
+-Moving the pieces
+-Interactions between pieces
+-Win/lose state

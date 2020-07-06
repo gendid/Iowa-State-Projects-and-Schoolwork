@@ -1,0 +1,90 @@
+#include <cstdio>
+#include <cstdint>
+#include <cstdlib>
+#include <cstring>
+#include <ncurses.h>
+
+#include "board.h"
+#include "unit.h"
+#include "io.h"
+
+void new_board(board*b);
+
+void init_board(board* b)
+{
+  new_board(b);
+}
+
+void new_board(board* b)
+{
+  board* blank= new board();
+  b=blank;
+}
+
+void place_piece_p1(board* b)
+{
+  int x=0;
+  int y=6;
+  char c;
+  mvprintw(0, 0, "Player 1, place a %s, use r to place, wasd to move", b->player1pieces.front()->returnName());
+
+
+  while(!b->player1pieces.empty())
+    {  
+      mvaddch(x, y, '*');
+      refresh();
+
+  switch((c = getch()))
+    {
+    case 'w':
+      if (y>0)
+	{
+	  y--;
+	}
+      break;
+    case 'a':
+      if (x>0)
+	{
+	  x--;
+	}
+      break;
+    case 's':
+      if (y<9)
+	{
+	  y++;
+	}
+      break;
+    case 'd':
+      if (x<9)
+	{
+	  y++;
+	}
+      break;
+    case 'r':
+      if((b->spaces[y][x]==0)&&(y>=6))
+	{
+	  b->spaces[y][x]=b->player1pieces.front();
+	  b->player1pieces.erase(b->player1pieces.begin());
+	}
+      else
+	{
+	  if(b->spaces[y][x]==0)
+	    {
+	      mvprintw(0,0,"Space occupied");
+	    }
+	  else
+	    {
+	      mvprintw(0,0,"Invalid starting space");
+	    }
+	}
+
+    }
+    }
+
+  refresh();
+}
+
+void delete_board(board*b)
+{
+  free(b);
+}

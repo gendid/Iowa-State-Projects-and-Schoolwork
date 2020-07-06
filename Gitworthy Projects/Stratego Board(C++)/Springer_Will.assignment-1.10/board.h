@@ -1,0 +1,27 @@
+#ifndef BOARD_H
+# define BOARD_H
+
+#include <vector>
+#include "unit.h"
+
+class unit;
+
+class board
+{
+public:
+ board() : spaces{0}, playerTurn(1), player1pieces(), player2pieces() {} 
+
+  unit* spaces[10][10];
+  int playerTurn;
+  std::vector<unit*> player1pieces;
+  std::vector<unit*> player2pieces;
+
+};
+
+void init_board(board* b);
+void new_board(board* b);
+void place_piece_p1(board* b);
+void place_piece_p2(board* b);
+void delete_board(board* b);
+
+#endif

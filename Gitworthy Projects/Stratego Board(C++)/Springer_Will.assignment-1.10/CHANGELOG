@@ -1,0 +1,4 @@
+4/26/2019: Settled on idea for stratego, began to lay out file structure
+4/27/2019: Created the classes for board and units
+4/28/2019: Created unit creators and debugged
+4/29/2019: Created O/I functions and unit placement
